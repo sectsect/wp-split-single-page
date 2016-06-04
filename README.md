@@ -12,7 +12,7 @@
 
 #### functions
 - - -
-* `is_single_paged($num)`	- Detect the specific split page.
+* `is_single_paged($num)`	- Detect the specific split page. (`boolean`)
 * `single_paginate($args)`	- Output the pagination.
 
 ### Usage Example
