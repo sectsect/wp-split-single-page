@@ -4,10 +4,9 @@
 
 #### Installation
 - - -
- 1. Download the wp-split-single-page.zip file to your computer.  
- 2. Unzip the file.  
- 3. Upload the wp-split-single-page directory to your `/wp-content/plugins/` directory.  
- 4. Activate the plugin through the 'Plugins' menu in WordPress.  
+ 1. `cd /path-to-your/wp-content/plugins/`   
+ 2. `git clone git@github.com:sectsect/wp-split-single-page.git`  
+ 3. Activate the plugin through the 'Plugins' menu in WordPress.  
 
  That's it:ok_hand:
 
