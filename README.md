@@ -1,6 +1,6 @@
-# ![Alt text](images/logo.jpg "SECT") WP Split Single Page - For Each Array -
+# ![Alt text](images/logo.jpg "SECT") WP Split Single Page - For Each Array of custom field -
 
-### Supply some functions and Pagination for split single page for each array without `<!--nextpage-->` on your template.
+### Supply some functions and Pagination for split single page for each array of custom field without `<!--nextpage-->` on your template.
 
 #### Installation
 - - -

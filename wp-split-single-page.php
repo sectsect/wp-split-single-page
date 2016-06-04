@@ -2,7 +2,7 @@
 /*
 Plugin Name: WP Split Single Page
 Plugin URI: https://github.com/sectsect/wp-split-single-page
-Description: Supply some functions and Pagination for split single page for each array without <!--nextpage--> on your template.
+Description: Supply some functions and Pagination for split single page for each array of custom field without <!--nextpage--> on your template.
 Author: SECT INTERACTIVE AGENCY
 Version: 1.0.0
 Author URI: https://www.ilovesect.com/
