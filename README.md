@@ -14,8 +14,8 @@
 
 | Function | Description |
 | ------ | ----------- |
-| `is_single_paged($num)`  | Detect the specific split page. (`boolean`) |
-| `single_paginate($args)` | Output the pagination. (Based on `paginate_links()` [Codex](https://codex.wordpress.org/Function_Reference/paginate_links)) |
+| `is_single_paged($num)`  | Detect the specific split page. ( Return: `boolean` ) |
+| `single_paginate($args)` | Output the pagination. ( Based on `paginate_links()` [Codex](https://codex.wordpress.org/Function_Reference/paginate_links) ) |
 
 ##### `single_paginate($args)` Default Arguments
 ``` php
