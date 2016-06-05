@@ -1,4 +1,4 @@
-# ![Alt text](images/logo.jpg "SECT") WP Split Single Page <span style="font-size: 18px;">- For Each Array of custom field -</span>
+# ![Alt text](images/logo.jpg "SECT") WP Split Single Page - For Each Array of custom field -
 
 ### Supply some functions and Pagination for split single page for each array of custom field without `<!--nextpage-->` on your template.
 
@@ -17,7 +17,7 @@
 * `single_paginate($args)`	- Output the pagination. (Based on `paginate_links()` [Codex](https://codex.wordpress.org/Function_Reference/paginate_links))  
 
 	##### Default Arguments
-	```
+	``` php
 <?php
 	$args = array(
 		'base'               => get_the_permalink() . '%#%/',	// (is_preview()) get_the_permalink() . '&paged=%#%'
@@ -46,7 +46,7 @@
 
 #### single.php
 NOTE: Split the page every two arrays.
-
+``` php
 	<?php get_header(); ?>
 
 	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -105,7 +105,7 @@ NOTE: Split the page every two arrays.
 	<?php endwhile; endif; ?>
 
 	<?php get_footer(); ?>
-
+```
 
 ### Change log  
  * **1.0.0** - Initial Release
