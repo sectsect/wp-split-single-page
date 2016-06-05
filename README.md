@@ -40,8 +40,7 @@
 	);
 ?>
 ```
-##### NOTE:
-`'base'` and `'format'` Silence is golden 👍
+**TIP:** `'base'` and `'format'` Silence is golden 👍
 
 ### Usage Example
 - - -
