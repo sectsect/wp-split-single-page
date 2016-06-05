@@ -9,6 +9,10 @@
  3. Activate the plugin through the 'Plugins' menu in WordPress.<br>
  That's it:ok_hand:
 
+#### Notes
+- - -
+* Supports `is_preview()` Page. See [Usage Example](#usage-example).
+
 #### functions
 - - -
 
