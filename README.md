@@ -12,12 +12,14 @@
 
 #### functions
 - - -
-* `is_single_paged($num)`	- Detect the specific split page. (`boolean`)
 
-* `single_paginate($args)`	- Output the pagination. (Based on `paginate_links()` [Codex](https://codex.wordpress.org/Function_Reference/paginate_links))  
+| Function | Description |
+| ------ | ----------- |
+| `is_single_paged($num)`  | Detect the specific split page. (`boolean`) |
+| `single_paginate($args)` | Output the pagination. (Based on `paginate_links()` [Codex](https://codex.wordpress.org/Function_Reference/paginate_links)) |
 
-	##### Default Arguments
-	``` php
+##### `single_paginate($args)` Default Arguments
+``` php
 <?php
 	$args = array(
 		'base'               => get_the_permalink() . '%#%/',	// (is_preview()) get_the_permalink() . '&paged=%#%'
@@ -37,9 +39,9 @@
 		'after_page_number'  => ''
 	);
 ?>
-	```
-	##### NOTE:
-	`'base'` and `'format'` Silence is golden 👍
+```
+##### NOTE:
+`'base'` and `'format'` Silence is golden 👍
 
 ### Usage Example
 - - -
