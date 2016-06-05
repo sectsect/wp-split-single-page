@@ -1,4 +1,4 @@
-# ![Alt text](images/logo.jpg "SECT") WP Split Single Page - For Each Array of custom field -
+# ![Alt text](images/logo.jpg "SECT") WP Split Single Page <span style="font-size: 18px;">- For Each Array of custom field -</span>
 
 ### Supply some functions and Pagination for split single page for each array of custom field without `<!--nextpage-->` on your template.
 
@@ -109,3 +109,6 @@ NOTE: Split the page every two arrays.
 
 ### Change log  
  * **1.0.0** - Initial Release
+
+### License
+See [LICENSE](https://github.com/sectsect/wp-split-single-page/blob/master/LICENSE) file.
