@@ -47,64 +47,64 @@
 #### single.php
 NOTE: Split the page every two arrays.
 ``` php
-	<?php get_header(); ?>
+<?php get_header(); ?>
 
-	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-	<article>
-		<h1><?php the_title(); ?></h1>
+<article>
+	<h1><?php the_title(); ?></h1>
 
-		<?php if (is_single_paged(1)): ?>
-			<section>
-				something...
-			</section>
-		<?php endif; ?>
-
-		<?php
-			$fields    = CFS()->get('section');
-			$fields    = array_chunk($fields, 2);
-			if(!is_preview()){
-				$paged   = (get_query_var('page')) ? get_query_var('page') : 1;
-			}else{
-				$pagenum = $_GET['paged'];
-				$paged   = ($pagenum) ? $pagenum : 1;
-			}
-			$key       = $paged - 1;    // "-1" For Array's key
-			$pagecount = count($fields);
-			$fields    = $fields[$key];
-			foreach ($fields as $field):
-		?>
-			<section>
-				<?php if ($field['h2']): ?>
-					<h2><?php echo $field['h2']; ?></h2>
-				<?php endif; ?>
-
-				<?php if ($field['h3']): ?>
-					<h3><?php echo $field['h3']; ?></h3>
-				<?php endif; ?>
-
-				<?php if ($field['text']): ?>
-					<?php echo $field['text']; ?>
-				<?php endif; ?>
-			</section>
-		<?php endforeach; ?>
-
-		<section class="pagenation">
-			<?php
-				if(function_exists('single_paginate')){
-					$args = array(
-						'total'    => $pagecount,
-						'current'  => $paged
-					);
-					single_paginate($args);
-				}
-			?>
+	<?php if (is_single_paged(1)): ?>
+		<section>
+			something...
 		</section>
-	</article>
+	<?php endif; ?>
 
-	<?php endwhile; endif; ?>
+	<?php
+		$fields    = CFS()->get('section');
+		$fields    = array_chunk($fields, 2);
+		if(!is_preview()){
+			$paged   = (get_query_var('page')) ? get_query_var('page') : 1;
+		}else{
+			$pagenum = $_GET['paged'];
+			$paged   = ($pagenum) ? $pagenum : 1;
+		}
+		$key       = $paged - 1;    // "-1" For Array's key
+		$pagecount = count($fields);
+		$fields    = $fields[$key];
+		foreach ($fields as $field):
+	?>
+		<section>
+			<?php if ($field['h2']): ?>
+				<h2><?php echo $field['h2']; ?></h2>
+			<?php endif; ?>
 
-	<?php get_footer(); ?>
+			<?php if ($field['h3']): ?>
+				<h3><?php echo $field['h3']; ?></h3>
+			<?php endif; ?>
+
+			<?php if ($field['text']): ?>
+				<?php echo $field['text']; ?>
+			<?php endif; ?>
+		</section>
+	<?php endforeach; ?>
+
+	<section class="pagenation">
+		<?php
+			if(function_exists('single_paginate')){
+				$args = array(
+					'total'    => $pagecount,
+					'current'  => $paged
+				);
+				single_paginate($args);
+			}
+		?>
+	</section>
+</article>
+
+<?php endwhile; endif; ?>
+
+<?php get_footer(); ?>
 ```
 
 ### Change log  
