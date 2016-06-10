@@ -198,6 +198,47 @@ function single_paginate( $args = '' ) {
 }
 
 /**
+ * Get the Previous / Next Single Paged link
+ */
+function prev_single_paged_link($pagecount, $paged, $label) {
+	$html = '<li class="prev">';
+	if($paged == 1){
+		$html .= '<span>' . $label . '</span>';
+	}else{
+		$prev = $paged - 1;
+		if($prev == 1){
+			$link = get_the_permalink();
+		}else{
+			$link = get_the_permalink() . $prev . '/';
+		}
+		$html .= '<a href="' . $link . '" rel="prev">' . $label . '</a>';
+	}
+	$html .= '</li>';
+
+	if($html) {
+		echo $html;
+	}
+}
+function next_single_paged_link($pagecount, $paged, $label) {
+	$html = '<li class="next">';
+	if($paged == $pagecount){
+		$html .= '<span>' . $label . '</span>';
+	}else{
+		$next = $paged + 1;
+		$link = get_the_permalink() . $next . '/';
+		$html .= '<a href="' . $link . '" rel="next">' . $label . '</a>';
+	}
+	$html .= '</li>';
+
+	if($html) {
+		echo $html;
+	}
+}
+// ▼ USAGE
+// prev_single_paged_link($pagecount, $paged, "PREV");
+// next_single_paged_link($pagecount, $paged, "NEXT");
+
+/**
  * Detect Single-Paged for split single-page
  */
 function is_single_paged($page){
