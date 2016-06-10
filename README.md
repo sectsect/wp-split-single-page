@@ -20,6 +20,8 @@
 | ------ | ----------- |
 | `is_single_paged($num)`  | Detect the specific split page. ( Return: `boolean` ) |
 | `single_paginate($args)` | Output the pagination. ( Based on `paginate_links()` [Codex](https://codex.wordpress.org/Function_Reference/paginate_links) ) |
+| `prev_single_paged_link($pagecount, $paged, $label)` | Output the Previous Single Paged link |
+| `next_single_paged_link($pagecount, $paged, $label)` | Output the Next Single Paged link |
 
 ##### `single_paginate($args)` Default Arguments
 ``` php
@@ -103,6 +105,15 @@ NOTE: Split the page every two arrays.
 				single_paginate($args);
 			}
 		?>
+	</section>
+
+	<section class="prev-next">
+		<ul>
+			<?php
+				prev_single_paged_link($pagecount, $paged, "PREV");
+				next_single_paged_link($pagecount, $paged, "NEXT");
+			?>
+		</ul>
 	</section>
 </article>
 
