@@ -20,10 +20,10 @@
 | ------ | ----------- |
 | `is_single_paged($num)`  | Detect the specific split page. ( Return: `boolean` ) |
 | `single_paginate($args)` | Get the Pagination. ( Based on `paginate_links()` [Codex](https://codex.wordpress.org/Function_Reference/paginate_links) ) |
-| `prev_single_paged_link($pagecount, $paged, $label)` | Get the Previous Split Single Page link |
-| `next_single_paged_link($pagecount, $paged, $label)` | Get the Next Split Single Page link |
+| `prev_single_paged_link($pagecount, $paged, $label, $type)` | Get the Previous Split Single Page link |
+| `next_single_paged_link($pagecount, $paged, $label, $type)` | Get the Next Split Single Page link |
 
-##### `single_paginate($args)` Default Arguments
+#### `single_paginate($args)` Default Arguments
 ``` php
 <?php
 	$args = array(
@@ -46,6 +46,19 @@
 ?>
 ```
 **TIP:** `'base'` and `'format'` Silence is golden 👍
+
+#### `prev_single_paged_link()` `next_single_paged_link()` Default Arguments
+
+##### label
+(string) (Optional) Link text to display.  
+Default: 'Next'
+
+##### type
+(string) (optional) Controls format of the returned value. Possible values are:
+- 'plain' - `<a href="#" rel="next">Next</a>`
+- 'list' - `<li class="next"><a href="#" rel="next">Next</a></li>`
+
+Default: 'plain'
 
 ### Usage Example
 - - -

@@ -200,8 +200,11 @@ function single_paginate( $args = '' ) {
 /**
  * Get the Previous / Next Single Paged link
  */
-function prev_single_paged_link($pagecount, $paged, $label) {
-	$html = '<li class="prev">';
+function prev_single_paged_link($pagecount, $paged, $label = "Prev", $type = "plain") {
+	$html = '';
+	if($type == "list"){
+		$html .= '<li class="prev">';
+	}
 	if($paged == 1){
 		$html .= '<span>' . $label . '</span>';
 	}else{
@@ -221,14 +224,19 @@ function prev_single_paged_link($pagecount, $paged, $label) {
 		}
 		$html .= '<a href="' . $link . '" rel="prev">' . $label . '</a>';
 	}
-	$html .= '</li>';
+	if($type == "list"){
+		$html .= '</li>';
+	}
 
 	if($html) {
 		echo $html;
 	}
 }
-function next_single_paged_link($pagecount, $paged, $label) {
-	$html = '<li class="next">';
+function next_single_paged_link($pagecount, $paged, $label = "Next", $type = "plain") {
+	$html = '';
+	if($type == "list"){
+		$html .= '<li class="next">';
+	}
 	if($paged == $pagecount){
 		$html .= '<span>' . $label . '</span>';
 	}else{
@@ -240,7 +248,9 @@ function next_single_paged_link($pagecount, $paged, $label) {
 		}
 		$html .= '<a href="' . $link . '" rel="next">' . $label . '</a>';
 	}
-	$html .= '</li>';
+	if($type == "list"){
+		$html .= '</li>';
+	}
 
 	if($html) {
 		echo $html;
