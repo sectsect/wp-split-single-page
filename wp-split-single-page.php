@@ -207,9 +207,17 @@ function prev_single_paged_link($pagecount, $paged, $label) {
 	}else{
 		$prev = $paged - 1;
 		if($prev == 1){
-			$link = get_the_permalink();
+			if(!is_preview()){
+				$link = get_the_permalink();
+			}else{
+				$link = get_the_permalink() . '&paged=' . $prev . '&preview=true';
+			}
 		}else{
-			$link = get_the_permalink() . $prev . '/';
+			if(!is_preview()){
+				$link = get_the_permalink() . $prev . '/';
+			}else{
+				$link = get_the_permalink() . '&paged=' . $prev . '&preview=true';
+			}
 		}
 		$html .= '<a href="' . $link . '" rel="prev">' . $label . '</a>';
 	}
@@ -225,7 +233,11 @@ function next_single_paged_link($pagecount, $paged, $label) {
 		$html .= '<span>' . $label . '</span>';
 	}else{
 		$next = $paged + 1;
-		$link = get_the_permalink() . $next . '/';
+		if(!is_preview()){
+			$link = get_the_permalink() . $next . '/';
+		}else{
+			$link = get_the_permalink() . '&paged=' . $next . '&preview=true';
+		}
 		$html .= '<a href="' . $link . '" rel="next">' . $label . '</a>';
 	}
 	$html .= '</li>';
