@@ -123,8 +123,8 @@ NOTE: Split the page every two arrays.
 	<section class="prev-next">
 		<ul>
 			<?php
-				prev_single_paged_link($pagecount, $paged, "PREV");
-				next_single_paged_link($pagecount, $paged, "NEXT");
+				prev_single_paged_link($pagecount, $paged, "PREV", "list");
+				next_single_paged_link($pagecount, $paged, "NEXT", "list");
 			?>
 		</ul>
 	</section>
