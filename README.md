@@ -19,9 +19,9 @@
 | Function | Description |
 | ------ | ----------- |
 | `is_single_paged($num)`  | Detect the specific split page. ( Return: `boolean` ) |
-| `single_paginate($args)` | Output the pagination. ( Based on `paginate_links()` [Codex](https://codex.wordpress.org/Function_Reference/paginate_links) ) |
-| `prev_single_paged_link($pagecount, $paged, $label)` | Output the Previous Single Paged link |
-| `next_single_paged_link($pagecount, $paged, $label)` | Output the Next Single Paged link |
+| `single_paginate($args)` | Get the Pagination. ( Based on `paginate_links()` [Codex](https://codex.wordpress.org/Function_Reference/paginate_links) ) |
+| `prev_single_paged_link($pagecount, $paged, $label)` | Get the Previous Split Single Page link |
+| `next_single_paged_link($pagecount, $paged, $label)` | Get the Next Split Single Page link |
 
 ##### `single_paginate($args)` Default Arguments
 ``` php
