@@ -12,7 +12,7 @@
 #### Notes
 - - -
 * Supports `is_preview()` Page. See [Usage Example](#usage-example).
-
+* Supports Wordpress Plugin [Public Post Preview](https://wordpress.org/plugins/public-post-preview/)
 #### functions
 - - -
 
@@ -136,6 +136,7 @@ NOTE: Split the page every two arrays.
 ```
 
 ### Change log  
+ * **1.2.0** - Add Support Wordpress Plugin [Public Post Preview](https://wordpress.org/plugins/public-post-preview/)
  * **1.1.0** - Add New functions `prev_single_paged_link()` and `next_single_paged_link()`
  * **1.0.0** - Initial Release
 
