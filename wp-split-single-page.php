@@ -92,7 +92,12 @@ function single_paginate_links( $args = '' ) {
 		$link = str_replace( '%#%', $current - 1, $link );
 
 		// add code
-		$link = str_replace( '/1/', '/', $link );
+		// For Plugin "Public Post Preview"
+		if(isset($_GET['p']) && isset($_GET['_ppp'])){
+			$link = str_replace( '&paged=1', '', $link );
+		}else{
+			$link = str_replace( '/1/', '/', $link );
+		}
 
 		if ( $add_args )
 			$link = add_query_arg( $add_args, $link );
@@ -117,7 +122,12 @@ function single_paginate_links( $args = '' ) {
 
 				// add code
 				if(1 == $n){
-					$link = str_replace( '%#%/', '', $args['base'] );
+					// For Plugin "Public Post Preview"
+					if(isset($_GET['p']) && isset($_GET['_ppp'])){
+						$link = str_replace( '&paged=%#%', '', $args['base'] );
+					}else{
+						$link = str_replace( '%#%/', '', $args['base'] );
+					}
 				}else{
 					$link = str_replace( '%_%', $args['format'], $args['base'] );
 				}
@@ -173,10 +183,18 @@ function single_paginate( $args = '' ) {
 			'format'         => get_the_permalink() . '%#%/'
 		);
 	}else{
-		$args1 = array(
-			'base'           => get_the_permalink() . '&paged=%#%',
-			'format'         => get_the_permalink() . '&paged=%#%'
-		);
+		// For Plugin "Public Post Preview"
+		if(isset($_GET['p']) && isset($_GET['_ppp'])){
+			$args1 = array(
+				'base'           => home_url('/') . '?p=' . wp_unslash($_GET['p']) . '&preview=1&_ppp=' . wp_unslash($_GET['_ppp']) . '&paged=%#%',
+				'format'         => home_url('/') . '?p=' . wp_unslash($_GET['p']) . '&preview=1&_ppp=' . wp_unslash($_GET['_ppp']) . '&paged=%#%'
+			);
+		}else{
+			$args1 = array(
+				'base'           => get_the_permalink() . '&paged=%#%',
+				'format'         => get_the_permalink() . '&paged=%#%'
+			);
+		}
 	}
 	$args2 = array(
 		'total'              => $pagecount,
@@ -213,13 +231,23 @@ function prev_single_paged_link($pagecount, $paged, $label = "Prev", $type = "pl
 			if(!is_preview()){
 				$link = get_the_permalink();
 			}else{
-				$link = get_the_permalink() . '&paged=' . $prev . '&preview=true';
+				// For Plugin "Public Post Preview"
+				if(isset($_GET['p']) && isset($_GET['_ppp'])){
+					$link = home_url('/') . '?p=' . wp_unslash($_GET['p']) . '&preview=1&_ppp=' . wp_unslash($_GET['_ppp']);
+				}else{
+					$link = get_the_permalink() . '&paged=' . $prev . '&preview=true';
+				}
 			}
 		}else{
 			if(!is_preview()){
 				$link = get_the_permalink() . $prev . '/';
 			}else{
-				$link = get_the_permalink() . '&paged=' . $prev . '&preview=true';
+				// For Plugin "Public Post Preview"
+				if(isset($_GET['p']) && isset($_GET['_ppp'])){
+					$link = home_url('/') . '?p=' . wp_unslash($_GET['p']) . '&preview=1&_ppp=' . wp_unslash($_GET['_ppp']) . '&paged=' . $prev;
+				}else{
+					$link = get_the_permalink() . '&paged=' . $prev . '&preview=true';
+				}
 			}
 		}
 		$html .= '<a href="' . $link . '" rel="prev">' . $label . '</a>';
@@ -244,7 +272,12 @@ function next_single_paged_link($pagecount, $paged, $label = "Next", $type = "pl
 		if(!is_preview()){
 			$link = get_the_permalink() . $next . '/';
 		}else{
-			$link = get_the_permalink() . '&paged=' . $next . '&preview=true';
+			// For Plugin "Public Post Preview"
+			if(isset($_GET['p']) && isset($_GET['_ppp'])){
+				$link = home_url('/') . '?p=' . wp_unslash($_GET['p']) . '&preview=1&_ppp=' . wp_unslash($_GET['_ppp']) . '&paged=' . $next;
+			}else{
+				$link = get_the_permalink() . '&paged=' . $next . '&preview=true';
+			}
 		}
 		$html .= '<a href="' . $link . '" rel="next">' . $label . '</a>';
 	}
