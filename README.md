@@ -13,6 +13,7 @@
 - - -
 * Supports `is_preview()` Page. See [Usage Example](#usage-example).
 * Supports Wordpress Plugin [Public Post Preview](https://wordpress.org/plugins/public-post-preview/)
+
 #### functions
 - - -
 
