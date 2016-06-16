@@ -123,7 +123,7 @@ function single_paginate_links( $args = '' ) {
 				// add code
 				if(1 == $n){
 					// For Plugin "Public Post Preview"
-					if(isset($_GET['p']) && isset($_GET['_ppp'])){
+					if(is_preview()){
 						$link = str_replace( '&paged=%#%', '', $args['base'] );
 					}else{
 						$link = str_replace( '%#%/', '', $args['base'] );
@@ -235,7 +235,7 @@ function prev_single_paged_link($pagecount, $paged, $label = "Prev", $type = "pl
 				if(isset($_GET['p']) && isset($_GET['_ppp'])){
 					$link = home_url('/') . '?p=' . wp_unslash($_GET['p']) . '&preview=1&_ppp=' . wp_unslash($_GET['_ppp']);
 				}else{
-					$link = get_the_permalink() . '&paged=' . $prev . '&preview=true';
+					$link = get_the_permalink() . '&preview=true';
 				}
 			}
 		}else{
