@@ -12,7 +12,7 @@
 #### Notes
 - - -
 * Supports `is_preview()` Page. See [Usage Example](#usage-example).
-* Supports Wordpress Plugin [Public Post Preview](https://wordpress.org/plugins/public-post-preview/)
+* Supports Wordpress Plugin [Public Post Preview](https://github.com/ocean90/public-post-preview)
 
 #### functions
 - - -
@@ -24,7 +24,8 @@
 | `prev_single_paged_link($pagecount, $paged, $label, $type)` | Get the Previous Split Single Page link |
 | `next_single_paged_link($pagecount, $paged, $label, $type)` | Get the Next Split Single Page link |
 
-#### `single_paginate($args)` Default Arguments
+#### `single_paginate($args)`  
+Default Arguments
 ``` php
 <?php
 	$args = array(
@@ -48,18 +49,20 @@
 ```
 **TIP:** `'base'` and `'format'` Silence is golden 👍
 
-#### `prev_single_paged_link()` `next_single_paged_link()` Default Arguments
+#### `prev_single_paged_link()` / `next_single_paged_link()`  
+Default Arguments
 
-##### label
+* **label**
 (string) (Optional) Link text to display.  
-Default: 'Next'
+Default: `'Next'`
 
-##### type
-(string) (optional) Controls format of the returned value. Possible values are:
-- 'plain' - `<a href="#" rel="next">Next</a>`
-- 'list' - `<li class="next"><a href="#" rel="next">Next</a></li>`
+* **type**
+(string) (optional) Controls format of the returned value.  
+Possible values are:
+ - **'plain'** - `<a href="#" rel="next">Next</a>`
+ - **'list'** - `<li class="next"><a href="#" rel="next">Next</a></li>`
 
-Default: 'plain'
+ Default: `'plain'`
 
 ### Usage Example
 - - -
@@ -137,7 +140,7 @@ NOTE: Split the page every two arrays.
 ```
 
 ### Change log  
- * **1.2.0** - Add Support Wordpress Plugin [Public Post Preview](https://wordpress.org/plugins/public-post-preview/)
+ * **1.2.0** - Add Support Wordpress Plugin [Public Post Preview](https://github.com/ocean90/public-post-preview)
  * **1.1.0** - Add New functions `prev_single_paged_link()` and `next_single_paged_link()`
  * **1.0.0** - Initial Release
 
