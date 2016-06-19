@@ -49,8 +49,14 @@ Default Arguments
 ```
 **TIP:** `'base'` and `'format'` Silence is golden 👍
 
-#### `prev_single_paged_link()` / `next_single_paged_link()`  
-Default Arguments
+#### `next_single_paged_link($pagecount, $paged, $label, $type)`  
+##### Parameters
+
+* **pagecount**
+(integer) The total number of pages.
+
+* **paged**
+(integer) The current page number.
 
 * **label**
 (string) (Optional) Link text to display.  
