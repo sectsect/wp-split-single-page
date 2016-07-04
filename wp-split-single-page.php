@@ -197,8 +197,8 @@ function single_paginate( $args = '' ) {
 		}
 	}
 	$args2 = array(
-		'total'              => $pagecount,
-		'current'            => $paged,
+		'total'              => 1,
+		'current'            => 1,
 		'show_all'           => false,
 		'end_size'           => 1,
 		'mid_size'           => 2,
