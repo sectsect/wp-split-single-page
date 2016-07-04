@@ -92,7 +92,7 @@ NOTE: Split the page every two arrays.
 
 	<?php
 		$fields    = CFS()->get('section');
-		$fields    = array_chunk($fields, 2);
+		$fields    = array_chunk((array)$fields, 2);
 		if(!is_preview()){
 			$paged   = (get_query_var('page')) ? get_query_var('page') : 1;
 		}else{
