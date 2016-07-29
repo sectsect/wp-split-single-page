@@ -96,7 +96,9 @@ NOTE: Split the page every two arrays.
 		if(!is_preview()){
 			$paged   = (get_query_var('page')) ? get_query_var('page') : 1;
 		}else{
-			$pagenum = $_GET['paged'];
+			if(isset($_GET['paged'])){
+				$pagenum = wp_unslash($_GET['paged']);
+			}
 			$paged   = ($pagenum) ? $pagenum : 1;
 		}
 		$key       = $paged - 1;    // "-1" For Array's key
