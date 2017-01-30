@@ -1,0 +1,16 @@
+{
+    "name": "sectsect/wp-split-single-page",
+    "description": "Supply some functions and Pagination for split single page for each array of custom field without <!--nextpage--> on your template.",
+	"keywords": ["github", "wordpress", "plugin", "split", "nextpage"],
+    "type": "wordpress-plugin",
+    "require": {
+        "php": ">=5.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "SECT WEB INTERACTIVE",
+			"homepage": "https://www.ilovesect.com/"
+        }
+    ]
+}
