@@ -3,20 +3,22 @@
 
 ### Supply some functions and Pagination for split single page for each array of custom field without `<!--nextpage-->` on your template.
 
-#### Installation
-- - -
- 1. `cd /path-to-your/wp-content/plugins/`
- 2. `git clone git@github.com:sectsect/wp-split-single-page.git`
- 3. Activate the plugin through the 'Plugins' menu in WordPress.<br>
+## Installation
+
+ 1. Clone this Repo into your `wp-content/plugins` directory.
+```
+$ cd /path-to-your/wp-content/plugins/
+$ git clone git@github.com:sectsect/wp-split-single-page.git
+```
+ 2. Activate the plugin through the 'Plugins' menu in WordPress.<br>
  That's it:ok_hand:
 
-#### Notes
-- - -
+## Notes
+
 * Supports `is_preview()` Page. See [Usage Example](#usage-example).
 * Supports Wordpress Plugin [Public Post Preview](https://github.com/ocean90/public-post-preview)
 
-#### functions
-- - -
+## functions
 
 | Function | Description |
 | ------ | ----------- |
@@ -71,8 +73,7 @@ Possible values are:
 
  Default: `'plain'`
 
-### Usage Example
-- - -
+## Usage Example
 
 #### single.php
 NOTE: Split the page every two arrays.
@@ -148,11 +149,11 @@ NOTE: Split the page every two arrays.
 <?php get_footer(); ?>
 ```
 
-### Change log  
+## Change log  
  * **1.2.1** - Add composer.json
  * **1.2.0** - Add Support Wordpress Plugin [Public Post Preview](https://github.com/ocean90/public-post-preview)
  * **1.1.0** - Add New functions `prev_single_paged_link()` and `next_single_paged_link()`
  * **1.0.0** - Initial Release
 
-### License
+## License
 See [LICENSE](https://github.com/sectsect/wp-split-single-page/blob/master/LICENSE) file.
