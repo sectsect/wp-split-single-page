@@ -8,6 +8,28 @@ Version: 1.2.1
 Author URI: https://www.ilovesect.com/
 */
 
+function add_slash_before_page_num($link) {
+	if ( get_option('permalink_structure') != '' ) {
+		$laststr = substr(get_option('permalink_structure'), -1);
+		if ($laststr !== "/") {
+			$link = str_replace('%#%', '/%#%', $link);
+		}
+	}
+
+	return $link;
+}
+
+function add_slash_before_page_num_from_any($num) {
+	if ( get_option('permalink_structure') != '' ) {
+		$laststr = substr(get_option('permalink_structure'), -1);
+		if ($laststr !== "/") {
+			$num = "/" . $num;
+		}
+	}
+
+	return $num;
+}
+
 function single_paginate_links($args = '') {
 	global $wp_query, $wp_rewrite;
 
@@ -89,6 +111,10 @@ function single_paginate_links($args = '') {
 
 	if ($args['prev_next'] && $current && 1 < $current) :
 		$link = str_replace('%_%', 2 == $current ? '' : $args['format'], $args['base']);
+
+		// If the last character of the permalink setting is anything other than a slash, add a slash
+		$link = add_slash_before_page_num($link);
+
 		$link = str_replace('%#%', $current - 1, $link);
 
 		// add code
@@ -132,6 +158,11 @@ function single_paginate_links($args = '') {
 					$link = str_replace('%_%', $args['format'], $args['base']);
 				}
 
+				if(!is_preview()){
+					// If the last character of the permalink setting is anything other than a slash, add a slash
+					$link = add_slash_before_page_num($link);
+				}
+
 				$link = str_replace('%#%', $n, $link);
 				if ($add_args)
 					$link = add_query_arg($add_args, $link);
@@ -148,6 +179,10 @@ function single_paginate_links($args = '') {
 	endfor;
 	if ($args['prev_next'] && $current && ($current < $total || -1 == $total)) :
 		$link = str_replace('%_%', $args['format'], $args['base']);
+
+		// If the last character of the permalink setting is anything other than a slash, add a slash
+		$link = add_slash_before_page_num($link);
+
 		$link = str_replace('%#%', $current + 1, $link);
 		if ($add_args)
 			$link = add_query_arg($add_args, $link);
@@ -237,9 +272,16 @@ function prev_single_paged_link($pagecount, $paged, $label = "Prev", $type = "pl
 				}else{
 					$link = get_the_permalink() . '&preview=true';
 				}
+				// For Plugin "CF Preview Fix"
+				if(isset($_GET['post_date']) && isset($_GET['preview_time'])){
+					$link .= '&post_date=' . wp_unslash($_GET['post_date']) . '&preview_time=' . wp_unslash($_GET['preview_time']);
+				}
 			}
 		}else{
 			if(!is_preview()){
+				// If the last character of the permalink setting is anything other than a slash, add a slash
+				$prev = add_slash_before_page_num_from_any($prev);
+
 				$link = get_the_permalink() . $prev . '/';
 			}else{
 				// For Plugin "Public Post Preview"
@@ -247,6 +289,10 @@ function prev_single_paged_link($pagecount, $paged, $label = "Prev", $type = "pl
 					$link = home_url('/') . '?p=' . wp_unslash($_GET['p']) . '&preview=1&_ppp=' . wp_unslash($_GET['_ppp']) . '&paged=' . $prev;
 				}else{
 					$link = get_the_permalink() . '&paged=' . $prev . '&preview=true';
+				}
+				// For Plugin "CF Preview Fix"
+				if(isset($_GET['post_date']) && isset($_GET['preview_time'])){
+					$link .= '&post_date=' . wp_unslash($_GET['post_date']) . '&preview_time=' . wp_unslash($_GET['preview_time']);
 				}
 			}
 		}
@@ -270,6 +316,9 @@ function next_single_paged_link($pagecount, $paged, $label = "Next", $type = "pl
 	}else{
 		$next = $paged + 1;
 		if(!is_preview()){
+			// If the last character of the permalink setting is anything other than a slash, add a slash
+			$next = add_slash_before_page_num_from_any($next);
+
 			$link = get_the_permalink() . $next . '/';
 		}else{
 			// For Plugin "Public Post Preview"
@@ -277,6 +326,10 @@ function next_single_paged_link($pagecount, $paged, $label = "Next", $type = "pl
 				$link = home_url('/') . '?p=' . wp_unslash($_GET['p']) . '&preview=1&_ppp=' . wp_unslash($_GET['_ppp']) . '&paged=' . $next;
 			}else{
 				$link = get_the_permalink() . '&paged=' . $next . '&preview=true';
+			}
+			// For Plugin "CF Preview Fix"
+			if(isset($_GET['post_date']) && isset($_GET['preview_time'])){
+				$link .= '&post_date=' . wp_unslash($_GET['post_date']) . '&preview_time=' . wp_unslash($_GET['preview_time']);
 			}
 		}
 		$html .= '<a href="' . $link . '" rel="next">' . $label . '</a>';
