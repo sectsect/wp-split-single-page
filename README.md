@@ -15,8 +15,13 @@ $ git clone git@github.com:sectsect/wp-split-single-page.git
 
 ## Notes
 
-* Supports `is_preview()` Page. See [Usage Example](#usage-example).
-* Supports Wordpress Plugin [Public Post Preview](https://github.com/ocean90/public-post-preview)
+- Supports `is_preview()` Page. See [Usage Example](#usage-example).
+- Supports Wordpress Plugin [Public Post Preview](https://github.com/ocean90/public-post-preview)
+- Supports Wordpress Plugin [CF Preview Fix](https://wordpress.org/plugins/cf-preview-fix/) for Cloudfront  
+:memo: You need to manually add the following two parameters to the URL output by CF Preview Fix.  
+```
+&post_date=20171231021559&preview_time=20171231021604
+```
 
 ## functions
 
@@ -150,6 +155,7 @@ NOTE: Split the page every two arrays.
 ```
 
 ## Change log  
+ * **1.2.2** - Add support other than slash at the last character of permalink setting. And Support Plugin [CF Preview Fix](https://wordpress.org/plugins/cf-preview-fix/) for Cloudfront (w/ conditions).
  * **1.2.1** - Add composer.json
  * **1.2.0** - Add Support Wordpress Plugin [Public Post Preview](https://github.com/ocean90/public-post-preview)
  * **1.1.0** - Add New functions `prev_single_paged_link()` and `next_single_paged_link()`
