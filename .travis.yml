@@ -23,9 +23,9 @@ matrix:
   allow_failures:
     - php: nightly
 
-install:
-  - sudo curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+#install:
+#  - sudo curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
-script:
- - wp scaffold plugin wp-split-single-page
+#script:
+# - wp scaffold plugin wp-split-single-page
 #  - phpunit
