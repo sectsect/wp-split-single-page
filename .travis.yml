@@ -23,5 +23,8 @@ matrix:
   allow_failures:
     - php: nightly
 
+before_script:
+  - sudo curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+
 script:
   - wp scaffold plugin wp-split-single-page
