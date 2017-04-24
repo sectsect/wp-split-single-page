@@ -1,15 +1,17 @@
 <?php
 /**
-Plugin Name: WP Split Single Page
-Plugin URI: https://github.com/sectsect/wp-split-single-page
-Description: Supply some functions and Pagination for split single page for each array of custom field without <!--nextpage--> on your template.
-Author: SECT INTERACTIVE AGENCY
-Version: 1.2.2
-Author URI: https://www.ilovesect.com/
+ * Plugin Name:     WP Split Single Page
+ * Plugin URI:      https://github.com/sectsect/wp-split-single-page
+ * Description:     Supply some functions and Pagination for split single page for each array of custom field without <!--nextpage--> on your template.
+ * Author:          SECT INTERACTIVE AGENCY
+ * Author URI:      https://www.ilovesect.com/
+ * Version:         1.2.2
+ *
+ * @package         WP_Split_Single_Page
  */
 
 /**
- * [add_slash_before_page_num description]
+ * Add slash before page num.
  *
  * @param [type] $link [description]
  */
@@ -24,6 +26,11 @@ function add_slash_before_page_num( $link ) {
 	return $link;
 }
 
+/**
+ * Add slash before page num from any.
+ *
+ * @param [type] $num [description]
+ */
 function add_slash_before_page_num_from_any( $num ) {
 	if ( get_option( 'permalink_structure' ) != '' ) {
 		$laststr = substr( get_option( 'permalink_structure' ), -1 );
@@ -35,6 +42,11 @@ function add_slash_before_page_num_from_any( $num ) {
 	return $num;
 }
 
+/**
+ * Single Page Num Links.
+ * @param  string $args [description]
+ * @return html       [description]
+ */
 function single_paginate_links( $args = '' ) {
 	global $wp_query, $wp_rewrite;
 
@@ -217,7 +229,8 @@ function single_paginate_links( $args = '' ) {
 
 
 /**
- * [single_paginate description]
+ * Single Paginate
+ *
  * @param  string $args "description".
  * @return void
  */
@@ -314,7 +327,7 @@ function prev_single_paged_link( $pagecount, $paged, $label = 'Prev', $type = 'p
 			}
 		}
 		$html .= '<a href="' . $link . '" rel="prev">' . $label . '</a>';
-	}//end if
+	}//end if().
 	if ( 'list' === $type ) {
 		$html .= '</li>';
 	}
@@ -333,18 +346,18 @@ function next_single_paged_link( $pagecount, $paged, $label = 'Next', $type = 'p
 	} else {
 		$next = $paged + 1;
 		if ( ! is_preview() ) {
-			// If the last character of the permalink setting is anything other than a slash, add a slash
+			// If the last character of the permalink setting is anything other than a slash, add a slash !
 			$next = add_slash_before_page_num_from_any( $next );
 
 			$link = get_the_permalink() . $next . '/';
 		} else {
-			// For Plugin "Public Post Preview"
+			// For Plugin "Public Post Preview" !
 			if ( isset( $_GET['p'] ) && isset( $_GET['_ppp'] ) ) {
 				$link = home_url( '/' ) . '?p=' . wp_unslash( $_GET['p'] ) . '&preview=1&_ppp=' . wp_unslash( $_GET['_ppp'] ) . '&paged=' . $next;
 			} else {
 				$link = get_the_permalink() . '&paged=' . $next . '&preview=true';
 			}
-			// For Plugin "CF Preview Fix"
+			// For Plugin "CF Preview Fix" !
 			if ( isset( $_GET['post_date'] ) && isset( $_GET['preview_time'] ) ) {
 				$link .= '&post_date=' . wp_unslash( $_GET['post_date'] ) . '&preview_time=' . wp_unslash( $_GET['preview_time'] );
 			}
