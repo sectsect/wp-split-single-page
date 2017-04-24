@@ -13,7 +13,7 @@
 /**
  * Add slash before page num.
  *
- * @param [type] $link [description]
+ * @param [type] $link "description".
  */
 function add_slash_before_page_num( $link ) {
 	if ( get_option( 'permalink_structure' ) != '' ) {
@@ -29,7 +29,7 @@ function add_slash_before_page_num( $link ) {
 /**
  * Add slash before page num from any.
  *
- * @param [type] $num [description]
+ * @param [type] $num "description".
  */
 function add_slash_before_page_num_from_any( $num ) {
 	if ( get_option( 'permalink_structure' ) != '' ) {
@@ -45,8 +45,8 @@ function add_slash_before_page_num_from_any( $num ) {
 /**
  * Single Page Num Links.
  *
- * @param  string $args [description]
- * @return html       [description]
+ * @param  string $args "description".
+ * @return html       "description".
  */
 function single_paginate_links( $args = '' ) {
 	global $wp_query, $wp_rewrite;
@@ -163,7 +163,6 @@ function single_paginate_links( $args = '' ) {
 			$dots = true;
 		else :
 			if ( $args['show_all'] || ($n <= $end_size || ($current && $n >= $current - $mid_size && $n <= $current + $mid_size) || $n > $total - $end_size) ) :
-				// $link = str_replace( '%_%', 1 == $n ? '' : $args['format'], $args['base'] );
 				// Add code !
 				if ( 1 == $n ) {
 					// For Plugin "Public Post Preview" !
@@ -342,7 +341,7 @@ function prev_single_paged_link( $pagecount, $paged, $label = 'Prev', $type = 'p
  * @param  string $paged     "description".
  * @param  string $label     "description".
  * @param  string $type      "description".
- * @return string            "description".
+ * @return void            "description".
  */
 function next_single_paged_link( $pagecount, $paged, $label = 'Next', $type = 'plain' ) {
 	$html = '';
@@ -384,7 +383,7 @@ function next_single_paged_link( $pagecount, $paged, $label = 'Next', $type = 'p
 /**
  * Detect Single-Paged for split single-page
  *
- * @param  [type]  $page "description".
+ * @param  [type] $page "description".
  * @return boolean       "description".
  */
 function is_single_paged( $page ) {
