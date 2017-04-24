@@ -327,7 +327,7 @@ function prev_single_paged_link( $pagecount, $paged, $label = 'Prev', $type = 'p
 			}
 		}
 		$html .= '<a href="' . $link . '" rel="prev">' . $label . '</a>';
-	}//end if().
+	}//End if().
 	if ( 'list' === $type ) {
 		$html .= '</li>';
 	}
@@ -336,6 +336,14 @@ function prev_single_paged_link( $pagecount, $paged, $label = 'Prev', $type = 'p
 		echo $html;
 	}
 }
+/**
+ * Next Single Paged Link
+ * @param  [type] $pagecount [description]
+ * @param  [type] $paged     [description]
+ * @param  string $label     [description]
+ * @param  string $type      [description]
+ * @return string            [description]
+ */
 function next_single_paged_link( $pagecount, $paged, $label = 'Next', $type = 'plain' ) {
 	$html = '';
 	if ( 'list' === $type ) {
