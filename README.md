@@ -17,8 +17,8 @@ $ git clone git@github.com:sectsect/wp-split-single-page.git
 
 - Supports `is_preview()` Page. See [Usage Example](#usage-example).
 - Supports Wordpress Plugin [Public Post Preview](https://github.com/ocean90/public-post-preview)
-- Supports Wordpress Plugin [CF Preview Fix](https://wordpress.org/plugins/cf-preview-fix/) for Cloudfront  
-:memo: You need to manually add the following two parameters to the URL output by CF Preview Fix.  
+- Supports Wordpress Plugin [CF Preview Fix](https://wordpress.org/plugins/cf-preview-fix/) for Cloudfront
+:memo: You need to manually add the following two parameters to the URL output by CF Preview Fix.
 ```
 &post_date=20171231021559&preview_time=20171231021604
 ```
@@ -32,7 +32,7 @@ $ git clone git@github.com:sectsect/wp-split-single-page.git
 | `prev_single_paged_link($pagecount, $paged, $label, $type)` | Get the Previous Split Single Page link |
 | `next_single_paged_link($pagecount, $paged, $label, $type)` | Get the Next Split Single Page link |
 
-#### `single_paginate($args)`  
+#### `single_paginate($args)`
 Default Arguments
 ``` php
 <?php
@@ -57,7 +57,7 @@ Default Arguments
 ```
 **TIP:** `'base'` and `'format'` Silence is golden 👍
 
-#### `next_single_paged_link($pagecount, $paged, $label, $type)`  
+#### `next_single_paged_link($pagecount, $paged, $label, $type)`
 ##### Parameters
 
 * **pagecount**
@@ -67,11 +67,11 @@ Default Arguments
 (integer) The current page number.
 
 * **label**
-(string) (Optional) Link text to display.  
+(string) (Optional) Link text to display.
 Default: `'Next'`
 
 * **type**
-(string) (optional) Controls format of the returned value.  
+(string) (optional) Controls format of the returned value.
 Possible values are:
  - **'plain'** - `<a href="#" rel="next">Next</a>`
  - **'list'** - `<li class="next"><a href="#" rel="next">Next</a></li>`
@@ -154,7 +154,8 @@ NOTE: Split the page every two arrays.
 <?php get_footer(); ?>
 ```
 
-## Change log  
+## Change log
+ * **1.2.3** - Add PHP Unit Testing w/phpunit via TravisCI
  * **1.2.2** - Add support other than slash at the last character of permalink setting. And Support Plugin [CF Preview Fix](https://wordpress.org/plugins/cf-preview-fix/) for Cloudfront (w/ conditions).
  * **1.2.1** - Add composer.json
  * **1.2.0** - Add Support Wordpress Plugin [Public Post Preview](https://github.com/ocean90/public-post-preview)

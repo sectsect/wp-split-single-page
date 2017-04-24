@@ -5,7 +5,7 @@
  * Description:     Supply some functions and Pagination for split single page for each array of custom field without <!--nextpage--> on your template.
  * Author:          SECT INTERACTIVE AGENCY
  * Author URI:      https://www.ilovesect.com/
- * Version:         1.2.2
+ * Version:         1.2.3
  *
  * @package         WP_Split_Single_Page
  */
