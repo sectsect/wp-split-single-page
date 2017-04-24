@@ -299,7 +299,7 @@ function prev_single_paged_link( $pagecount, $paged, $label = 'Prev', $type = 'p
 			}
 		}
 		$html .= '<a href="' . $link . '" rel="prev">' . $label . '</a>';
-	}
+	}//end if
 	if ( $type == 'list' ) {
 		$html .= '</li>';
 	}
@@ -336,7 +336,7 @@ function next_single_paged_link( $pagecount, $paged, $label = 'Next', $type = 'p
 		}
 		$html .= '<a href="' . $link . '" rel="next">' . $label . '</a>';
 	}
-	if ( $type == 'list' ) {
+	if ( $type === 'list' ) {
 		$html .= '</li>';
 	}
 
@@ -355,13 +355,18 @@ function is_single_paged( $page ) {
 	if ( ! is_preview() ) {
 		$paged = (get_query_var( 'page' )) ? get_query_var( 'page' ) : 1;
 	} else {
-		$pagenum = $_GET['paged'];
+		$pagenum = wp_unslash( $_GET['paged'] );
 		$paged   = ($pagenum) ? $pagenum : 1;
-		$wp_query->query = array( 'p' => $post->ID, 'page' => $paged, 'preview' => true, 'post_type' => get_post_type() );
+		$wp_query->query = array(
+			'p' => $post->ID,
+			'page' => $paged,
+			'preview' => true,
+			'post_type' => get_post_type(),
+		);
 		$wp_query->set( 'paged', $paged );
 	}
 
-	if ( is_single() && $paged == $page ) {
+	if ( is_single() && $paged === $page ) {
 		return true;
 	} else {
 		return false;
