@@ -332,7 +332,9 @@ function prev_single_paged_link( $pagecount, $paged, $label = 'Prev', $type = 'p
 		$html .= '</li>';
 	}
 
-	echo $html;
+	if ( $html ) {
+		echo $html;
+	}
 }
 /**
  * Next Single Paged Link
