@@ -277,11 +277,11 @@ function single_paginate( $args = '' ) {
 /**
  * Get the Previous / Next Single Paged link
  *
- * @param  string $pagecount [description]
- * @param  string $paged     [description]
- * @param  string $label     [description]
- * @param  string $type      [description]
- * @return void            [description]
+ * @param  string $pagecount "description".
+ * @param  string $paged     "description".
+ * @param  string $label     "description".
+ * @param  string $type      "description".
+ * @return string            "description".
  */
 function prev_single_paged_link( $pagecount, $paged, $label = 'Prev', $type = 'plain' ) {
 	$html = '';
@@ -327,7 +327,7 @@ function prev_single_paged_link( $pagecount, $paged, $label = 'Prev', $type = 'p
 			}
 		}
 		$html .= '<a href="' . $link . '" rel="prev">' . $label . '</a>';
-	}//End if().
+	}// End if().
 	if ( 'list' === $type ) {
 		$html .= '</li>';
 	}
@@ -338,11 +338,11 @@ function prev_single_paged_link( $pagecount, $paged, $label = 'Prev', $type = 'p
 }
 /**
  * Next Single Paged Link
- * @param  [type] $pagecount [description]
- * @param  [type] $paged     [description]
- * @param  string $label     [description]
- * @param  string $type      [description]
- * @return string            [description]
+ * @param  [type] $pagecount "description".
+ * @param  [type] $paged     "description".
+ * @param  string $label     "description".
+ * @param  string $type      "description".
+ * @return string            "description".
  */
 function next_single_paged_link( $pagecount, $paged, $label = 'Next', $type = 'plain' ) {
 	$html = '';
@@ -383,8 +383,11 @@ function next_single_paged_link( $pagecount, $paged, $label = 'Next', $type = 'p
 // ▼ USAGE
 // prev_single_paged_link($pagecount, $paged, "PREV");
 // next_single_paged_link($pagecount, $paged, "NEXT");
+
 /**
  * Detect Single-Paged for split single-page
+ * @param  [type]  $page "description".
+ * @return boolean       "description".
  */
 function is_single_paged( $page ) {
 	global $wp_query;
