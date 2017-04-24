@@ -44,6 +44,7 @@ function add_slash_before_page_num_from_any( $num ) {
 
 /**
  * Single Page Num Links.
+ *
  * @param  string $args [description]
  * @return html       [description]
  */
@@ -163,7 +164,7 @@ function single_paginate_links( $args = '' ) {
 		else :
 			if ( $args['show_all'] || ($n <= $end_size || ($current && $n >= $current - $mid_size && $n <= $current + $mid_size) || $n > $total - $end_size) ) :
 				// $link = str_replace( '%_%', 1 == $n ? '' : $args['format'], $args['base'] );
-				// add code
+				// Add code !
 				if ( 1 == $n ) {
 					// For Plugin "Public Post Preview" !
 					if ( is_preview() ) {
@@ -281,7 +282,7 @@ function single_paginate( $args = '' ) {
  * @param  string $paged     "description".
  * @param  string $label     "description".
  * @param  string $type      "description".
- * @return string            "description".
+ * @return void            "description".
  */
 function prev_single_paged_link( $pagecount, $paged, $label = 'Prev', $type = 'plain' ) {
 	$html = '';
@@ -332,14 +333,13 @@ function prev_single_paged_link( $pagecount, $paged, $label = 'Prev', $type = 'p
 		$html .= '</li>';
 	}
 
-	if ( $html ) {
-		echo $html;
-	}
+	echo $html;
 }
 /**
  * Next Single Paged Link
- * @param  [type] $pagecount "description".
- * @param  [type] $paged     "description".
+ *
+ * @param  string $pagecount "description".
+ * @param  string $paged     "description".
  * @param  string $label     "description".
  * @param  string $type      "description".
  * @return string            "description".
@@ -380,12 +380,10 @@ function next_single_paged_link( $pagecount, $paged, $label = 'Next', $type = 'p
 		echo $html;
 	}
 }
-// ▼ USAGE
-// prev_single_paged_link($pagecount, $paged, "PREV");
-// next_single_paged_link($pagecount, $paged, "NEXT");
 
 /**
  * Detect Single-Paged for split single-page
+ *
  * @param  [type]  $page "description".
  * @return boolean       "description".
  */
