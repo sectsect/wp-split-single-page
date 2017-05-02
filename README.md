@@ -1,4 +1,4 @@
-# ![Alt text](images/logo.jpg "SECT") WP Split Single Page [![Build Status](https://travis-ci.org/sectsect/wp-split-single-page.svg?branch=master)](https://travis-ci.org/sectsect/wp-split-single-page)
+# <img src="https://github-sect.s3-ap-northeast-1.amazonaws.com/logo.svg" width="28" height="auto"> WP Split Single Page [![Build Status](https://travis-ci.org/sectsect/wp-split-single-page.svg?branch=master)](https://travis-ci.org/sectsect/wp-split-single-page)
 #### \- For Each Array of custom field -
 
 ### Supply some functions and Pagination for split single page for each array of custom field without `<!--nextpage-->` on your template.
