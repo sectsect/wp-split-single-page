@@ -27,7 +27,7 @@ $ git clone git@github.com:sectsect/wp-split-single-page.git
 
 | Function | Description |
 | ------ | ----------- |
-| `is_single_paged($num)`  | Detect the specific split page. ( Return: `boolean` ) |
+| `is_single_paged($num)`  | Detect the specific splitted page number. ( Return: `boolean` ) |
 | `single_paginate($args)` | Get the Pagination. ( Based on `paginate_links()` [Codex](https://codex.wordpress.org/Function_Reference/paginate_links) ) |
 | `prev_single_paged_link($pagecount, $paged, $label, $type)` | Get the Previous Split Single Page link |
 | `next_single_paged_link($pagecount, $paged, $label, $type)` | Get the Next Split Single Page link |
@@ -73,10 +73,10 @@ Default: `'Next'`
 * **type**
 (string) (optional) Controls format of the returned value.
 Possible values are:
- - **'plain'** - `<a href="#" rel="next">Next</a>`
- - **'list'** - `<li class="next"><a href="#" rel="next">Next</a></li>`
+   - **'plain'** - `<a href="#" rel="next">Next</a>`
+   - **'list'** - `<li class="next"><a href="#" rel="next">Next</a></li>`
 
- Default: `'plain'`
+   Default: `'plain'`
 
 ## Usage Example
 
