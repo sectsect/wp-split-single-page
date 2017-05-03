@@ -389,12 +389,15 @@ function next_single_paged_link( $pagecount, $paged, $label = 'Next', $type = 'p
  * @return boolean       "description".
  */
 function is_single_paged( $page ) {
-	global $wp_query;
+	global $wp_query, $post;
 	if ( ! is_preview() ) {
 		$paged = (get_query_var( 'page' )) ? get_query_var( 'page' ) : 1;
 	} else {
-		$pagenum = wp_unslash( $_GET['paged'] );
-		$paged   = ($pagenum) ? $pagenum : 1;
+		$pagenum = '';
+		if ( isset( $_POST['paged'] ) ) {
+			$pagenum = wp_unslash( $_GET['paged'] );
+		}
+		$paged = ($pagenum) ? $pagenum : 1;
 		$wp_query->query = array(
 			'p' => $post->ID,
 			'page' => $paged,
