@@ -1,4 +1,5 @@
-# <img src="https://github-sect.s3-ap-northeast-1.amazonaws.com/logo.svg" width="28" height="auto"> WP Split Single Page [![Build Status](https://travis-ci.org/sectsect/wp-split-single-page.svg?branch=master)](https://travis-ci.org/sectsect/wp-split-single-page) [![Latest Stable Version](https://poser.pugx.org/sectsect/wp-split-single-page/v/stable)](https://packagist.org/packages/sectsect/wp-split-single-page) [![Total Downloads](https://poser.pugx.org/sectsect/wp-split-single-page/downloads)](https://packagist.org/packages/sectsect/wp-split-single-page) [![License](https://poser.pugx.org/sectsect/wp-split-single-page/license)](https://packagist.org/packages/sectsect/wp-split-single-page) [![PHPPackages Rank](http://phppackages.org/p/sectsect/wp-split-single-page/badge/rank.svg)](http://phppackages.org/p/sectsect/wp-split-single-page)
+# <img src="https://github-sect.s3-ap-northeast-1.amazonaws.com/logo.svg" width="28" height="auto"> WP Split Single Page
+[![Build Status](https://travis-ci.org/sectsect/wp-split-single-page.svg?branch=master)](https://travis-ci.org/sectsect/wp-split-single-page) [![Latest Stable Version](https://poser.pugx.org/sectsect/wp-split-single-page/v/stable)](https://packagist.org/packages/sectsect/wp-split-single-page) [![Total Downloads](https://poser.pugx.org/sectsect/wp-split-single-page/downloads)](https://packagist.org/packages/sectsect/wp-split-single-page) [![License](https://poser.pugx.org/sectsect/wp-split-single-page/license)](https://packagist.org/packages/sectsect/wp-split-single-page) [![PHPPackages Rank](http://phppackages.org/p/sectsect/wp-split-single-page/badge/rank.svg)](http://phppackages.org/p/sectsect/wp-split-single-page)
 #### \- For Each Array of custom field -
 
 ### Supply some functions and Pagination for split single page for each array of custom field without `<!--nextpage-->` on your template.
@@ -18,10 +19,10 @@ $ git clone git@github.com:sectsect/wp-split-single-page.git
 - Supports `is_preview()` Page. See [Usage Example](#usage-example).
 - Supports Wordpress Plugin [Public Post Preview](https://github.com/ocean90/public-post-preview)
 - Supports Wordpress Plugin [CF Preview Fix](https://wordpress.org/plugins/cf-preview-fix/) for Cloudfront
-:memo: You need to manually add the following two parameters to the URL output by CF Preview Fix.
-```
+  :memo: You need to manually add the following two parameters to the URL output by CF Preview Fix.
+  ```
 &post_date=20171231021559&preview_time=20171231021604
-```
+  ```
 
 ## functions
 
