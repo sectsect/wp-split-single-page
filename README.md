@@ -19,10 +19,10 @@ $ git clone git@github.com:sectsect/wp-split-single-page.git
 - Supports `is_preview()` Page. See [Usage Example](#usage-example).
 - Supports Wordpress Plugin [Public Post Preview](https://github.com/ocean90/public-post-preview)
 - Supports Wordpress Plugin [CF Preview Fix](https://wordpress.org/plugins/cf-preview-fix/) for Cloudfront
-  :memo: You need to manually add the following two parameters to the URL output by CF Preview Fix.
-  ```
+:memo: You need to manually add the following two parameters to the URL output by CF Preview Fix.
+```
 &post_date=20171231021559&preview_time=20171231021604
-  ```
+```
 
 ## functions
 
