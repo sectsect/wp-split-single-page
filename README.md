@@ -156,6 +156,7 @@ NOTE: Split the page every two arrays.
 ```
 
 ## Change log
+ * **1.2.5** - Fix navigation links when last character of permalink setting is not a slash
  * **1.2.4** - Fix PHP Notice for Undefined variable
  * **1.2.3** - Add PHP Unit Testing w/phpunit via TravisCI
  * **1.2.2** - Add support other than slash at the last character of permalink setting. And Support Plugin [CF Preview Fix](https://wordpress.org/plugins/cf-preview-fix/) for Cloudfront (w/ conditions).
