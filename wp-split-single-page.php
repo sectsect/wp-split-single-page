@@ -11,16 +11,33 @@
  */
 
 /**
+ * Determine if last character of permalink ends with a slash.
+ *
+ * @return boolean     "description".
+ */
+function is_perm_end_slash() {
+	if ( get_option( 'permalink_structure' ) != '' ) {
+		$laststr = substr( get_option( 'permalink_structure' ), -1 );
+		if ( '/' === $laststr ) {
+			$return = true;
+		} else {
+			$return = false;
+		}
+	} else {
+		$return = false;
+	}
+
+	return $return;
+}
+
+/**
  * Add slash before page num.
  *
  * @param [type] $link "description".
  */
 function add_slash_before_page_num( $link ) {
-	if ( get_option( 'permalink_structure' ) != '' ) {
-		$laststr = substr( get_option( 'permalink_structure' ), -1 );
-		if ( '/' !== $laststr ) {
-			$link = str_replace( '%#%', '/%#%', $link );
-		}
+	if ( ! is_perm_end_slash() ) {
+		$link = str_replace( '%#%', '/%#%', $link );
 	}
 
 	return $link;
@@ -32,11 +49,8 @@ function add_slash_before_page_num( $link ) {
  * @param [type] $num "description".
  */
 function add_slash_before_page_num_from_any( $num ) {
-	if ( get_option( 'permalink_structure' ) != '' ) {
-		$laststr = substr( get_option( 'permalink_structure' ), -1 );
-		if ( '/' !== $laststr ) {
-			$num = '/' . $num;
-		}
+	if ( ! is_perm_end_slash() ) {
+		$num = '/' . $num;
 	}
 
 	return $num;
@@ -133,14 +147,31 @@ function single_paginate_links( $args = '' ) {
 		// If the last character of the permalink setting is anything other than a slash, add a slash !
 		$link = add_slash_before_page_num( $link );
 
-		$link = str_replace( '%#%', $current - 1, $link );
+		if ( is_preview() ) {
+			if ( is_perm_end_slash() ) {
+				$target = '%#%';
+			} else {
+				$target = '/%#%';
+			}
+		} else {
+			$target = '%#%';
+		}
+
+		$link = str_replace( $target, $current - 1, $link );
 
 		// Add code
 		// For Plugin "Public Post Preview" !
 		if ( isset( $_GET['p'] ) && isset( $_GET['_ppp'] ) ) {
 			$link = str_replace( '&paged=1', '', $link );
 		} else {
-			$link = str_replace( '/1/', '/', $link );
+			if ( is_perm_end_slash() ) {
+				$target = '/1/';
+				$replaced = '/';
+			} else {
+				$target = '/1';
+				$replaced = '';
+			}
+			$link = str_replace( $target, $replaced, $link );
 		}
 
 		if ( $add_args ) {
@@ -169,7 +200,12 @@ function single_paginate_links( $args = '' ) {
 					if ( is_preview() ) {
 						$link = str_replace( '&paged=%#%', '', $args['base'] );
 					} else {
-						$link = str_replace( '%#%/', '', $args['base'] );
+						if ( is_perm_end_slash() ) {
+							$target = '%#%/';
+						} else {
+							$target = '%#%';
+						}
+						$link = str_replace( $target, '', $args['base'] );
 					}
 				} else {
 					$link = str_replace( '%_%', $args['format'], $args['base'] );
@@ -201,7 +237,18 @@ function single_paginate_links( $args = '' ) {
 		// If the last character of the permalink setting is anything other than a slash, add a slash !
 		$link = add_slash_before_page_num( $link );
 
-		$link = str_replace( '%#%', $current + 1, $link );
+		if ( is_preview() ) {
+			if ( is_perm_end_slash() ) {
+				$target = '%#%';
+			} else {
+				$target = '/%#%';
+			}
+		} else {
+			$target = '%#%';
+		}
+
+		$link = str_replace( $target, $current + 1, $link );
+
 		if ( $add_args ) {
 			$link = add_query_arg( $add_args, $link );
 		}
@@ -236,9 +283,14 @@ function single_paginate_links( $args = '' ) {
  */
 function single_paginate( $args = '' ) {
 	if ( ! is_preview() ) {
+		if ( is_perm_end_slash() ) {
+			$basestr = '%#%/';
+		} else {
+			$basestr = '%#%';
+		}
 		$args1 = array(
-			'base'           => get_the_permalink() . '%#%/',
-			'format'         => get_the_permalink() . '%#%/',
+			'base'           => get_the_permalink() . $basestr,
+			'format'         => get_the_permalink() . $basestr,
 		);
 	} else {
 		// For Plugin "Public Post Preview" !
@@ -312,7 +364,10 @@ function prev_single_paged_link( $pagecount, $paged, $label = 'Prev', $type = 'p
 				// If the last character of the permalink setting is anything other than a slash, add a slash !
 				$prev = add_slash_before_page_num_from_any( $prev );
 
-				$link = get_the_permalink() . $prev . '/';
+				$link = get_the_permalink() . $prev;
+				if ( is_perm_end_slash() ) {
+					$link .= '/';
+				}
 			} else {
 				// For Plugin "Public Post Preview" !
 				if ( isset( $_GET['p'] ) && isset( $_GET['_ppp'] ) ) {
@@ -325,7 +380,7 @@ function prev_single_paged_link( $pagecount, $paged, $label = 'Prev', $type = 'p
 					$link .= '&post_date=' . wp_unslash( $_GET['post_date'] ) . '&preview_time=' . wp_unslash( $_GET['preview_time'] );
 				}
 			}
-		}
+		}// End if().
 		$html .= '<a href="' . $link . '" rel="prev">' . $label . '</a>';
 	}// End if().
 	if ( 'list' === $type ) {
@@ -358,7 +413,10 @@ function next_single_paged_link( $pagecount, $paged, $label = 'Next', $type = 'p
 			// If the last character of the permalink setting is anything other than a slash, add a slash !
 			$next = add_slash_before_page_num_from_any( $next );
 
-			$link = get_the_permalink() . $next . '/';
+			$link = get_the_permalink() . $next;
+			if ( is_perm_end_slash() ) {
+				$link .= '/';
+			}
 		} else {
 			// For Plugin "Public Post Preview" !
 			if ( isset( $_GET['p'] ) && isset( $_GET['_ppp'] ) ) {
