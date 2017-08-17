@@ -164,5 +164,7 @@ NOTE: Split the page every two arrays (w/ [Custom Field Suite](https://wordpress
  * **1.1.0** - Add New functions `prev_single_paged_link()` and `next_single_paged_link()`
  * **1.0.0** - :tada: Initial Release
 
+  See [CHANGELOG](https://github.com/sectsect/wp-split-single-page/blob/master/CHANGELOG.md) file.
+
 ## License
 See [LICENSE](https://github.com/sectsect/wp-split-single-page/blob/master/LICENSE) file.
