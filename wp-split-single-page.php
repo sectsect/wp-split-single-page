@@ -340,10 +340,10 @@ function prev_single_paged_link( $pagecount, $paged, $label = 'Prev', $type = 'p
 	if ( 'list' === $type ) {
 		$html .= '<li class="prev">';
 	}
-	if ( 1 === $paged ) {
+	if ( 1 === (int) $paged ) {
 		$html .= '<span>' . $label . '</span>';
 	} else {
-		$prev = $paged - 1;
+		$prev = (int) $paged - 1;
 		if ( 1 === $prev ) {
 			if ( ! is_preview() ) {
 				$link = get_the_permalink();
@@ -405,10 +405,10 @@ function next_single_paged_link( $pagecount, $paged, $label = 'Next', $type = 'p
 	if ( 'list' === $type ) {
 		$html .= '<li class="next">';
 	}
-	if ( $paged === $pagecount ) {
+	if ( (int) $paged === (int) $pagecount ) {
 		$html .= '<span>' . $label . '</span>';
 	} else {
-		$next = $paged + 1;
+		$next = (int) $paged + 1;
 		if ( ! is_preview() ) {
 			// If the last character of the permalink setting is anything other than a slash, add a slash !
 			$next = add_slash_before_page_num_from_any( $next );
