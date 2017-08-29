@@ -1,5 +1,12 @@
 # Change Log
 
+## [v1.2.6](https://github.com/sectsect/wp-split-single-page/tree/v1.2.6) (2017-08-29)
+[Full Changelog](https://github.com/sectsect/wp-split-single-page/compare/v1.2.5...v1.2.6)
+
+**Fixed bugs:**
+
+- The problem that compare different types in function is\_single\_paged\(\). [\#1](https://github.com/sectsect/wp-split-single-page/issues/1)
+
 ## [v1.2.5](https://github.com/sectsect/wp-split-single-page/tree/v1.2.5) (2017-06-07)
 [Full Changelog](https://github.com/sectsect/wp-split-single-page/compare/v1.2.4...v1.2.5)
 
