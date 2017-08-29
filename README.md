@@ -91,7 +91,7 @@ NOTE: Split the page every two arrays (w/ [Custom Field Suite](https://wordpress
 
 	<?php if (is_single_paged(1)): ?>
 		<section>
-			something...
+			The first page only.
 		</section>
 	<?php endif; ?>
 
@@ -126,6 +126,12 @@ NOTE: Split the page every two arrays (w/ [Custom Field Suite](https://wordpress
 			<?php endif; ?>
 		</section>
 	<?php endforeach; ?>
+
+	<?php if (is_single_paged($pagecount)): ?>
+		<section>
+			The last page only.
+		</section>
+	<?php endif; ?>
 
 	<section class="pagenation">
 		<?php
