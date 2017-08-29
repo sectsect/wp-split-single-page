@@ -452,8 +452,9 @@ function is_single_paged( $page ) {
 		$paged = (get_query_var( 'page' )) ? get_query_var( 'page' ) : 1;
 	} else {
 		$pagenum = '';
-		if ( isset( $_POST['paged'] ) ) {
+		if ( isset( $_GET['paged'] ) ) {
 			$pagenum = wp_unslash( $_GET['paged'] );
+			$pagenum = (int) $pagenum;
 		}
 		$paged = ($pagenum) ? $pagenum : 1;
 		$wp_query->query = array(
@@ -465,7 +466,7 @@ function is_single_paged( $page ) {
 		$wp_query->set( 'paged', $paged );
 	}
 
-	if ( is_single() && $paged === $page ) {
+	if ( is_single() && $paged === (int) $page ) {
 		return true;
 	} else {
 		return false;
