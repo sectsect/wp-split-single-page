@@ -37,21 +37,21 @@ $ git clone git@github.com:sectsect/wp-split-single-page.git
 Default Arguments
 ``` php
 $args = array(
-	'base'               => get_the_permalink() . '%#%/',	// (is_preview()) get_the_permalink() . '&paged=%#%'
-	'format'             => get_the_permalink() . '%#%/',	// (is_preview()) get_the_permalink() . '&paged=%#%'
-	'total'              => 1,
-	'current'            => 0,
-	'show_all'           => false,
-	'end_size'           => 1,
-	'mid_size'           => 2,
-	'prev_next'          => true,
-	'prev_text'          => __('&laquo; Previous'),
-	'next_text'          => __('Next &raquo;'),
-	'type'               => 'list',
-	'add_args'           => false,
-	'add_fragment'       => '',
-	'before_page_number' => '',
-	'after_page_number'  => ''
+    'base'               => get_the_permalink() . '%#%/',	// (is_preview()) get_the_permalink() . '&paged=%#%'
+    'format'             => get_the_permalink() . '%#%/',	// (is_preview()) get_the_permalink() . '&paged=%#%'
+    'total'              => 1,
+    'current'            => 0,
+    'show_all'           => false,
+    'end_size'           => 1,
+    'mid_size'           => 2,
+    'prev_next'          => true,
+    'prev_text'          => __('&laquo; Previous'),
+    'next_text'          => __('Next &raquo;'),
+    'type'               => 'list',
+    'add_args'           => false,
+    'add_fragment'       => '',
+    'before_page_number' => '',
+    'after_page_number'  => '',
 );
 ```
 **TIP:** `'base'` and `'format'` Silence is golden 👍
@@ -87,72 +87,72 @@ NOTE: Split the page every two arrays (w/ [Custom Field Suite](https://wordpress
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
 <article>
-	<h1><?php the_title(); ?></h1>
+    <h1><?php the_title(); ?></h1>
 
-	<?php if (is_single_paged(1)): ?>
-		<section>
-			The first page only.
-		</section>
-	<?php endif; ?>
+    <?php if ( is_single_paged(1) ): ?>
+        <section>
+            The first page only.
+        </section>
+    <?php endif; ?>
 
-	<?php
-		$fields = CFS()->get('section');			// Get the array of Loop-field
-		$fields = array_values( (array)$fields );	// Renumbering Array Keys
-		$fields = array_chunk( (array)$fields, 2 );	// array_chunk
-		if ( ! is_preview() ) {
-			$paged   = ( get_query_var('page') ) ? get_query_var('page') : 1;
-		} else {
-			if ( isset( $_GET['paged'] ) ) {
-				$pagenum = wp_unslash( $_GET['paged'] );
-			}
-			$paged   = ( $pagenum ) ? $pagenum : 1;
-		}
-		$key       = $paged - 1;    // "-1" For Array's key
-		$pagecount = count( $fields );
-		$fields    = $fields[$key];
-		foreach ( $fields as $field ):
-	?>
-		<section>
-			<?php if ($field['h2']): ?>
-				<h2><?php echo $field['h2']; ?></h2>
-			<?php endif; ?>
+    <?php
+        $fields = CFS()->get('section');            // Get the array of Loop-field
+        $fields = array_values( (array) $fields );   // Renumbering Array Keys
+        $fields = array_chunk( (array) $fields, 2 ); // array_chunk
+        if ( ! is_preview() ) {
+            $paged   = ( get_query_var('page') ) ? get_query_var('page') : 1;
+        } else {
+            if ( isset( $_GET['paged'] ) ) {
+                $pagenum = (int) wp_unslash( $_GET['paged'] );
+            }
+            $paged   = ( $pagenum ) ? $pagenum : 1;
+        }
+        $key       = $paged - 1;    // "-1" For Array's key
+        $pagecount = count( $fields );
+        $fields    = $fields[$key];
+        foreach ( $fields as $field ):
+    ?>
+        <section>
+            <?php if ($field['h2']): ?>
+                <h2><?php echo $field['h2']; ?></h2>
+            <?php endif; ?>
 
-			<?php if ($field['h3']): ?>
-				<h3><?php echo $field['h3']; ?></h3>
-			<?php endif; ?>
+            <?php if ($field['h3']): ?>
+                <h3><?php echo $field['h3']; ?></h3>
+            <?php endif; ?>
 
-			<?php if ($field['text']): ?>
-				<?php echo $field['text']; ?>
-			<?php endif; ?>
-		</section>
-	<?php endforeach; ?>
+            <?php if ($field['text']): ?>
+                <?php echo $field['text']; ?>
+            <?php endif; ?>
+        </section>
+    <?php endforeach; ?>
 
-	<?php if (is_single_paged($pagecount)): ?>
-		<section>
-			The last page only.
-		</section>
-	<?php endif; ?>
+    <?php if ( is_single_paged($pagecount) ): ?>
+        <section>
+            The last page only.
+        </section>
+    <?php endif; ?>
 
-	<section class="pagenation">
-		<?php
-			if ( function_exists('single_paginate') ) {
-				$args = array(
-					'total'    => $pagecount,
-					'current'  => $paged,
-				);
-				single_paginate($args);
-			}
-		?>
-	</section>
+    <section class="pagenation">
+        <?php
+            if ( function_exists('single_paginate') ) {
+                $args = array(
+                    'total'    => $pagecount,
+                    'current'  => $paged,
+                );
+                single_paginate($args);
+            }
+        ?>
+    </section>
 
-	<section class="prev-next">
-		<ul>
-			<?php
-				prev_single_paged_link( $pagecount, $paged, "PREV", "list" );
-				next_single_paged_link( $pagecount, $paged, "NEXT", "list" );
-			?>
-		</ul>
-	</section>
+    <section class="prev-next">
+        <ul>
+            <?php
+                prev_single_paged_link( $pagecount, $paged, "PREV", "list" );
+                next_single_paged_link( $pagecount, $paged, "NEXT", "list" );
+            ?>
+        </ul>
+    </section>
 </article>
 
 <?php endwhile; endif; ?>
