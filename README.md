@@ -161,6 +161,7 @@ NOTE: Split the page every two arrays (w/ [Custom Field Suite](https://wordpress
 ```
 
 ## Change log
+ * **1.2.8** - Rename a function to `is_perm_trailingslash()`
  * **1.2.7** - Improve some codes for comparing same types
  * **1.2.6** - :bug: Fix bug in function `is_single_paged()`
  * **1.2.5** - :bug: Fix bug for navigation links when the permalink setting has no Trailing Slash
