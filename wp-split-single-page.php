@@ -81,21 +81,21 @@ function single_paginate_links( $args = '' ) {
 	$format .= $wp_rewrite->using_permalinks() ? user_trailingslashit( $wp_rewrite->pagination_base . '/%#%', 'paged' ) : '?paged=%#%';
 
 	$defaults = array(
-		'base' => $pagenum_link, // CKECK http://example.com/all_posts.php%_% : %_% is replaced by format (below) !
-		'format' => $format, // ?page=%#% : %#% is replaced by the page number !
-		'total' => $total,
-		'current' => $current,
-		'show_all' => false,
-		'prev_next' => true,
-		'prev_text' => __( '&laquo; Previous' ),
-		'next_text' => __( 'Next &raquo;' ),
-		'end_size' => 1,
-		'mid_size' => 2,
-		'type' => 'plain',
-		'add_args' => array(), // CHECK array of query args to add !
-		'add_fragment' => '',
+		'base'               => $pagenum_link, // CKECK http://example.com/all_posts.php%_% : %_% is replaced by format (below) !
+		'format'             => $format, // ?page=%#%       : %#% is replaced by the page number !
+		'total'              => $total,
+		'current'            => $current,
+		'show_all'           => false,
+		'prev_next'          => true,
+		'prev_text'          => __( '&laquo; Previous' ),
+		'next_text'          => __( 'Next &raquo;' ),
+		'end_size'           => 1,
+		'mid_size'           => 2,
+		'type'               => 'plain',
+		'add_args'           => array(), // CHECK array of query args to add !
+		'add_fragment'       => '',
 		'before_page_number' => '',
-		'after_page_number' => '',
+		'after_page_number'  => '',
 	);
 
 	$args = wp_parse_args( $args, $defaults );
@@ -107,7 +107,7 @@ function single_paginate_links( $args = '' ) {
 	// Merge additional query vars found in the original URL into 'add_args' array.
 	if ( isset( $url_parts[1] ) ) {
 		// Find the format argument.
-		$format = explode( '?', str_replace( '%_%', $args['format'], $args['base'] ) );
+		$format       = explode( '?', str_replace( '%_%', $args['format'], $args['base'] ) );
 		$format_query = isset( $format[1] ) ? $format[1] : '';
 		wp_parse_str( $format_query, $format_args );
 
@@ -136,10 +136,10 @@ function single_paginate_links( $args = '' ) {
 	if ( $mid_size < 0 ) {
 		$mid_size = 2;
 	}
-	$add_args = $args['add_args'];
-	$r = '';
+	$add_args   = $args['add_args'];
+	$r          = '';
 	$page_links = array();
-	$dots = false;
+	$dots       = false;
 
 	if ( $args['prev_next'] && $current && 1 < $current ) :
 		$link = str_replace( '%_%', 2 == $current ? '' : $args['format'], $args['base'] );
@@ -165,10 +165,10 @@ function single_paginate_links( $args = '' ) {
 			$link = str_replace( '&paged=1', '', $link );
 		} else {
 			if ( is_perm_trailingslash() ) {
-				$target = '/1/';
+				$target   = '/1/';
 				$replaced = '/';
 			} else {
-				$target = '/1';
+				$target   = '/1';
 				$replaced = '';
 			}
 			$link = str_replace( $target, $replaced, $link );
@@ -191,9 +191,9 @@ function single_paginate_links( $args = '' ) {
 	for ( $n = 1; $n <= $total; $n++ ) :
 		if ( $n == $current ) :
 			$page_links[] = "<span class='page-numbers current'>" . $args['before_page_number'] . number_format_i18n( $n ) . $args['after_page_number'] . '</span>';
-			$dots = true;
+			$dots         = true;
 		else :
-			if ( $args['show_all'] || ($n <= $end_size || ($current && $n >= $current - $mid_size && $n <= $current + $mid_size) || $n > $total - $end_size) ) :
+			if ( $args['show_all'] || ( $n <= $end_size || ( $current && $n >= $current - $mid_size && $n <= $current + $mid_size ) || $n > $total - $end_size ) ) :
 				// Add code !
 				if ( 1 == $n ) {
 					// For Plugin "Public Post Preview" !
@@ -224,14 +224,14 @@ function single_paginate_links( $args = '' ) {
 
 					/** This filter is documented in wp-includes/general-template.php */
 					$page_links[] = "<a class='page-numbers' href='" . esc_url( apply_filters( 'paginate_links', $link ) ) . "'>" . $args['before_page_number'] . number_format_i18n( $n ) . $args['after_page_number'] . '</a>';
-					$dots = true;
+					$dots         = true;
 			elseif ( $dots && ! $args['show_all'] ) :
 				$page_links[] = '<span class="page-numbers dots">' . __( '&hellip;' ) . '</span>';
-				$dots = false;
+				$dots         = false;
 			endif;
 		endif;
 	endfor;
-	if ( $args['prev_next'] && $current && ($current < $total || -1 == $total) ) :
+	if ( $args['prev_next'] && $current && ( $current < $total || -1 == $total ) ) :
 		$link = str_replace( '%_%', $args['format'], $args['base'] );
 
 		// If the last character of the permalink setting is anything other than a slash, add a slash !
@@ -289,20 +289,20 @@ function single_paginate( $args = '' ) {
 			$basestr = '%#%';
 		}
 		$args1 = array(
-			'base'           => get_the_permalink() . $basestr,
-			'format'         => get_the_permalink() . $basestr,
+			'base'   => get_the_permalink() . $basestr,
+			'format' => get_the_permalink() . $basestr,
 		);
 	} else {
 		// For Plugin "Public Post Preview" !
 		if ( isset( $_GET['p'] ) && isset( $_GET['_ppp'] ) ) {
 			$args1 = array(
-				'base'           => home_url( '/' ) . '?p=' . wp_unslash( $_GET['p'] ) . '&preview=1&_ppp=' . wp_unslash( $_GET['_ppp'] ) . '&paged=%#%',
-				'format'         => home_url( '/' ) . '?p=' . wp_unslash( $_GET['p'] ) . '&preview=1&_ppp=' . wp_unslash( $_GET['_ppp'] ) . '&paged=%#%',
+				'base'   => home_url( '/' ) . '?p=' . wp_unslash( $_GET['p'] ) . '&preview=1&_ppp=' . wp_unslash( $_GET['_ppp'] ) . '&paged=%#%',
+				'format' => home_url( '/' ) . '?p=' . wp_unslash( $_GET['p'] ) . '&preview=1&_ppp=' . wp_unslash( $_GET['_ppp'] ) . '&paged=%#%',
 			);
 		} else {
 			$args1 = array(
-				'base'           => get_the_permalink() . '&paged=%#%',
-				'format'         => get_the_permalink() . '&paged=%#%',
+				'base'   => get_the_permalink() . '&paged=%#%',
+				'format' => get_the_permalink() . '&paged=%#%',
 			);
 		}
 	}
@@ -321,7 +321,7 @@ function single_paginate( $args = '' ) {
 		'before_page_number' => '',
 		'after_page_number'  => '',
 	);
-	$args = array_merge( $args1, $args2, $args );
+	$args  = array_merge( $args1, $args2, $args );
 	echo single_paginate_links( $args );
 }
 
@@ -449,18 +449,18 @@ function next_single_paged_link( $pagecount, $paged, $label = 'Next', $type = 'p
 function is_single_paged( $page ) {
 	global $wp_query, $post;
 	if ( ! is_preview() ) {
-		$paged = (get_query_var( 'page' )) ? get_query_var( 'page' ) : 1;
+		$paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1;
 	} else {
 		$pagenum = '';
 		if ( isset( $_GET['paged'] ) ) {
 			$pagenum = wp_unslash( $_GET['paged'] );
 			$pagenum = (int) $pagenum;
 		}
-		$paged = ($pagenum) ? $pagenum : 1;
+		$paged           = ( $pagenum ) ? $pagenum : 1;
 		$wp_query->query = array(
-			'p' => $post->ID,
-			'page' => $paged,
-			'preview' => true,
+			'p'         => $post->ID,
+			'page'      => $paged,
+			'preview'   => true,
 			'post_type' => get_post_type(),
 		);
 		$wp_query->set( 'paged', $paged );
