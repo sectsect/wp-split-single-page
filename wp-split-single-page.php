@@ -15,7 +15,7 @@
  *
  * @return boolean     "description".
  */
-function is_perm_end_slash() {
+function is_perm_trailingslash() {
 	if ( get_option( 'permalink_structure' ) != '' ) {
 		$laststr = substr( get_option( 'permalink_structure' ), -1 );
 		if ( '/' === $laststr ) {
@@ -36,7 +36,7 @@ function is_perm_end_slash() {
  * @param [type] $link "description".
  */
 function add_slash_before_page_num( $link ) {
-	if ( ! is_perm_end_slash() ) {
+	if ( ! is_perm_trailingslash() ) {
 		$link = str_replace( '%#%', '/%#%', $link );
 	}
 
@@ -49,7 +49,7 @@ function add_slash_before_page_num( $link ) {
  * @param [type] $num "description".
  */
 function add_slash_before_page_num_from_any( $num ) {
-	if ( ! is_perm_end_slash() ) {
+	if ( ! is_perm_trailingslash() ) {
 		$num = '/' . $num;
 	}
 
@@ -148,7 +148,7 @@ function single_paginate_links( $args = '' ) {
 		$link = add_slash_before_page_num( $link );
 
 		if ( is_preview() ) {
-			if ( is_perm_end_slash() ) {
+			if ( is_perm_trailingslash() ) {
 				$target = '%#%';
 			} else {
 				$target = '/%#%';
@@ -164,7 +164,7 @@ function single_paginate_links( $args = '' ) {
 		if ( isset( $_GET['p'] ) && isset( $_GET['_ppp'] ) ) {
 			$link = str_replace( '&paged=1', '', $link );
 		} else {
-			if ( is_perm_end_slash() ) {
+			if ( is_perm_trailingslash() ) {
 				$target = '/1/';
 				$replaced = '/';
 			} else {
@@ -200,7 +200,7 @@ function single_paginate_links( $args = '' ) {
 					if ( is_preview() ) {
 						$link = str_replace( '&paged=%#%', '', $args['base'] );
 					} else {
-						if ( is_perm_end_slash() ) {
+						if ( is_perm_trailingslash() ) {
 							$target = '%#%/';
 						} else {
 							$target = '%#%';
@@ -238,7 +238,7 @@ function single_paginate_links( $args = '' ) {
 		$link = add_slash_before_page_num( $link );
 
 		if ( is_preview() ) {
-			if ( is_perm_end_slash() ) {
+			if ( is_perm_trailingslash() ) {
 				$target = '%#%';
 			} else {
 				$target = '/%#%';
@@ -283,7 +283,7 @@ function single_paginate_links( $args = '' ) {
  */
 function single_paginate( $args = '' ) {
 	if ( ! is_preview() ) {
-		if ( is_perm_end_slash() ) {
+		if ( is_perm_trailingslash() ) {
 			$basestr = '%#%/';
 		} else {
 			$basestr = '%#%';
@@ -365,7 +365,7 @@ function prev_single_paged_link( $pagecount, $paged, $label = 'Prev', $type = 'p
 				$prev = add_slash_before_page_num_from_any( $prev );
 
 				$link = get_the_permalink() . $prev;
-				if ( is_perm_end_slash() ) {
+				if ( is_perm_trailingslash() ) {
 					$link .= '/';
 				}
 			} else {
@@ -414,7 +414,7 @@ function next_single_paged_link( $pagecount, $paged, $label = 'Next', $type = 'p
 			$next = add_slash_before_page_num_from_any( $next );
 
 			$link = get_the_permalink() . $next;
-			if ( is_perm_end_slash() ) {
+			if ( is_perm_trailingslash() ) {
 				$link .= '/';
 			}
 		} else {
