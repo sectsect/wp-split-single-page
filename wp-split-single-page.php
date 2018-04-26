@@ -82,7 +82,7 @@ function single_paginate_links( $args = '' ) {
 
 	$defaults = array(
 		'base'               => $pagenum_link, // CKECK http://example.com/all_posts.php%_% : %_% is replaced by format (below) !
-		'format'             => $format, // ?page=%#% : %#% is replaced by the page number !
+		'format'             => $format, // "?page=%#%" "%#%" is replaced by the page number !
 		'total'              => $total,
 		'current'            => $current,
 		'show_all'           => false,
@@ -380,9 +380,9 @@ function prev_single_paged_link( $pagecount, $paged, $label = 'Prev', $type = 'p
 					$link .= '&post_date=' . wp_unslash( $_GET['post_date'] ) . '&preview_time=' . wp_unslash( $_GET['preview_time'] );
 				}
 			}
-		}// End if().
+		}
 		$html .= '<a href="' . $link . '" rel="prev">' . $label . '</a>';
-	}// End if().
+	}
 	if ( 'list' === $type ) {
 		$html .= '</li>';
 	}
