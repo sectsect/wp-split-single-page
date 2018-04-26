@@ -1,11 +1,50 @@
-## Overview
+> ℹ️  Describe the big picture of your changes here to communicate to the maintainers
+why we should accept this pull request. If it fixes a bug or resolves a feature
+request, be sure to link to that issue.
 
-Here, you might lay out the reasons behind writing this code. You can link to specs, issues, or bugs in order to give someone a better idea of how a decision was made. This is your chance to give context to your reviewer. Ego depletion - the idea that willpower is used up over time - can be easily applied to your reviewer. We are human, after all. You'll likely get one shot at a quality review, so help your reviewer help you. Flush out this section.
+### `Type`
+---
 
-## Testing
-How did you test this code? Did you write a unit test, or test it manually? Can you provide an animated gif or a screenshot to demonstrate your code does what it purports to do? What about test output or a useful snippet from a logfile? Help show that your code works.
+> ℹ️  What types of changes does your code introduce?
 
-## 🚨🚨🚨 (Risks)
-Is there some part of the code that you know probably doesn't work as it should? Call out potential weak spots, and get help addressing them. 
+> _Put an `x` in the boxes that apply_
 
-(this is the part where I upload an animated gif, for whimsy's sake - not everything has to be serious :grin:)
+- [ ] Fix
+- [ ] Perf
+- [ ] Docs
+- [ ] Test
+- [ ] Chore
+- [ ] Feature
+- [ ] Refactor
+
+### `SemVer`
+---
+
+> ℹ️  What changes to the current `semver` range does your PR introduce?
+
+> _Put an `x` in the boxes that apply_
+
+- [ ] Bug (:label: Patch)
+- [ ] Feature (:label: Minor)
+- [ ] Breaking Change (:label: Major)
+
+### `Issues`
+---
+
+> ℹ️  What issue (if any) are closed by your PR?
+
+> _Replace `#1` with the error number that applies_
+
+- Fixes `#1`
+
+### `Checklist`
+---
+
+> ℹ️  You can also fill these out after creating the PR. If you're unsure about any of them, don't hesitate to ask. This is a reminder of what we are going to look for before merging your code.
+
+> _Put an `x` in the boxes that apply._
+
+- [ ] Lint and unit tests pass with my changes
+- [ ] I have added tests that prove my fix is effective/works
+- [ ] I have added necessary documentation (if appropriate)
+- [ ] Any dependent changes are merged and published in downstream modules
