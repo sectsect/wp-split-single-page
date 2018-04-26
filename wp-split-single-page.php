@@ -82,7 +82,7 @@ function single_paginate_links( $args = '' ) {
 
 	$defaults = array(
 		'base'               => $pagenum_link, // CKECK http://example.com/all_posts.php%_% : %_% is replaced by format (below) !
-		'format'             => $format, // ?page=%#%       : %#% is replaced by the page number !
+		'format'             => $format, // ?page=%#% : %#% is replaced by the page number !
 		'total'              => $total,
 		'current'            => $current,
 		'show_all'           => false,
