@@ -88,7 +88,8 @@ Possible values are:
 ## Usage Example
 
 #### single.php
-NOTE: Split the page every two arrays (w/ [Custom Field Suite](https://wordpress.org/plugins/custom-field-suite/) Plugin).
+NOTE: Split the page by array (w/ [Custom Field Suite](https://wordpress.org/plugins/custom-field-suite/) Plugin).
+
 ``` php
 <head>
     <?php
@@ -112,7 +113,7 @@ NOTE: Split the page every two arrays (w/ [Custom Field Suite](https://wordpress
 
         <?php
             $pages = CFS()->get('page');               // Get the array of Loop-field
-            $pages = array_values( (array) $pages );   // Renumbering Array Keys
+            $pages = array_values( (array) $pages );   // Reset array Keys
             if ( ! is_preview() ) {
                 $paged = ( get_query_var('page') ) ? get_query_var('page') : 1;
             } else {
@@ -121,30 +122,28 @@ NOTE: Split the page every two arrays (w/ [Custom Field Suite](https://wordpress
                 }
                 $paged = ( $pagenum ) ? $pagenum : 1;
             }
-            $key       = $paged - 1;    // "-1" For Array's key
             $pagecount = count( $pages );
-            $pages     = $pages[$key];
-            foreach ( $pages as $page ) :
+            $key       = $paged - 1;    // "-1" For Array's key
+            $page      = $pages[$key];
         ?>
-            <section>
-                <?php if ( $page['h2'] ) : ?>
-                    <h2><?php echo $page['h2']; ?></h2>
-                <?php endif; ?>
+        <section>
+            <?php if ( $page['h2'] ) : ?>
+                <h2><?php echo $page['h2']; ?></h2>
+            <?php endif; ?>
 
-                <?php if ( $page['h3'] ) : ?>
-                    <h3><?php echo $page['h3']; ?></h3>
-                <?php endif; ?>
+            <?php if ( $page['h3'] ) : ?>
+                <h3><?php echo $page['h3']; ?></h3>
+            <?php endif; ?>
 
-                <?php if ( $page['text'] ) : ?>
-                    <?php echo $page['text']; ?>
-                <?php endif; ?>
-            </section>
-        <?php endforeach; ?>
+            <?php if ( $page['text'] ) : ?>
+                <?php echo $page['text']; ?>
+            <?php endif; ?>
+        </section>
 
         <?php if ( is_single_paged( $pagecount ) ) : ?>
-            <section>
-                The last page only.
-            </section>
+        <section>
+            The last page only.
+        </section>
         <?php endif; ?>
 
         <section class="pagenation">
