@@ -175,6 +175,7 @@ NOTE: Split the page every two arrays (w/ [Custom Field Suite](https://wordpress
 ```
 
 ## Change log
+ * **1.3.0** - Add New function `add_rel_prev_next_paginated_posts()`
  * **1.2.8** - Rename a function to `is_perm_trailingslash()`
  * **1.2.7** - Improve some codes for comparing same types
  * **1.2.6** - :bug: Fix bug in function `is_single_paged()`
