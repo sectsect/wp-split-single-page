@@ -472,3 +472,36 @@ function is_single_paged( $page ) {
 		return false;
 	}
 }
+
+/**
+ * Add Prev and Next Tags to Paginated Single Posts
+ *
+ * @param  [type] $num_pages "description".
+ * @return void       "description".
+ */
+function add_rel_prev_next_paginated_posts( $num_pages ) {
+	global $post;
+	$paged = intval( get_query_var( 'paged' ) );
+	if ( is_single() && ! is_preview() ) {
+		$perm_link = get_permalink();
+		if ( $num_pages > 1 ) {
+			$page = intval( get_query_var( 'page' ) );
+			if ( 0 == $page ) {
+				$page = 1;
+			}
+			if ( ( $page > 1 ) && ( $page <= $num_pages ) ) {
+				$prev_page_num = ( $page - 1 );
+				if ( 2 == $page ) {
+					$prev_page_num = '';
+				}
+				$full_url = user_trailingslashit( trailingslashit( $perm_link ) . $prev_page_num );
+				echo '<link rel="prev" href="' . esc_url( $full_url ) . '" />';
+			}
+			if ( ( $page >= 1 ) && ( $page < $num_pages ) ) {
+				$nxt_page_num = ( $page + 1 );
+				$full_url     = user_trailingslashit( trailingslashit( $perm_link ) . $nxt_page_num );
+				echo '<link rel="next" href="' . esc_url( $full_url ) . '" />';
+			}
+		}
+	}
+}
