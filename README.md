@@ -81,7 +81,7 @@ Possible values are:
 #### `add_rel_prev_next_paginated_posts($pagecount)`
 ##### Parameters
 
-* **num_pages**
+* **pagecount**
 `(integer)` The total number of pages.
 
 
