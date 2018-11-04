@@ -1,5 +1,8 @@
 # Change Log
 
+## [v1.3.0](https://github.com/sectsect/wp-split-single-page/tree/v1.3.0) (2018-11-04)
+[Full Changelog](https://github.com/sectsect/wp-split-single-page/compare/v1.2.8...v1.3.0)
+
 ## [v1.2.8](https://github.com/sectsect/wp-split-single-page/tree/v1.2.8) (2017-12-26)
 [Full Changelog](https://github.com/sectsect/wp-split-single-page/compare/v1.2.7...v1.2.8)
 
