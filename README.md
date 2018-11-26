@@ -174,6 +174,7 @@ NOTE: Split the page by array (w/ [Custom Field Suite](https://wordpress.org/plu
 ```
 
 ## Change log
+ * **1.4.0** - Specify canonical URL in canonical meta tag
  * **1.3.0** - Add New function `add_rel_prev_next_paginated_posts()`
  * **1.2.8** - Rename a function to `is_perm_trailingslash()`
  * **1.2.7** - Improve some codes for comparing same types
