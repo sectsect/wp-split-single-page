@@ -505,3 +505,27 @@ function add_rel_prev_next_paginated_posts( $num_pages ) {
 		}
 	}
 }
+
+/**
+ * A copy of rel_canonical but to allow an override on a custom tag
+ *
+ * @return html       "description".
+ */
+function rel_canonical_with_custom_tag_override() {
+	if ( ! is_singular() ) {
+		return;
+	}
+	global $post;
+	global $wp_the_query;
+	$id = $post->ID;
+	if ( $id != $wp_the_query->get_queried_object_id() ) {
+		return;
+	}
+	$link = get_permalink( $id );
+	echo "<link rel='canonical' href='" . esc_url( $link ) . "' />\n";
+}
+
+if ( function_exists( 'rel_canonical' ) ) {
+	remove_action( 'wp_head', 'rel_canonical' );
+}
+add_action( 'wp_head', 'rel_canonical_with_custom_tag_override' );
